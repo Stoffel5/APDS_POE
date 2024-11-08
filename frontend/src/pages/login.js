@@ -1,28 +1,29 @@
+
 import { useLogin } from "../hooks/useLogin"
 import { Link } from "react-router-dom"
 import { useFormik } from 'formik'
-import { loginSchema } from "../schemas/index"
+import { userSchema } from "../schemas/index"
 
   
 
 const Login = () => {
-    const { login, isLoading, error, ok } = useLogin()
+    const { login, error, ok } = useLogin()
 
     
-    const onSubmit = async (values, actions) => {
-        console.log(values);
-        console.log(actions);
-        //await new Promise((resolve) => setTimeout(resolve, 1000));
-        
-        await login(values.email, values.password)
-    };  
+const onSubmit = async (values, actions) => {
+    console.log(values);
+    console.log(actions);
+    //await new Promise((resolve) => setTimeout(resolve, 1000));
+    
+    await login(values.email, values.password)
+};  
 
-    const {values, errors, touched, handleBlur, handleChange, handleSubmit} = useFormik({
+    const {values, errors,touched,isSubmitting,handleBlur, handleChange, handleSubmit} = useFormik({
         initialValues: {
             email: '',
             password: '',
         },
-        validationSchema: loginSchema,
+        validationSchema: userSchema,
         onSubmit,
     });
 
@@ -53,11 +54,11 @@ const Login = () => {
                 id="password"
                 required
                 onBlur={handleBlur}
-                className={errors.password && touched.password  ? "input-error" : ""}
+                className={errors.name && touched.password  ? "input-error" : ""}
             />
-            {errors.password && touched.password && <p className="error">{errors.password}</p>}
+            {errors.name && touched.password && <p className="error">{errors.name}</p>}
 
-            <button type="submit" disabled={isLoading}> Login</button>
+            <button type="submit" disabled={isSubmitting}> Login</button>
             <Link to="/signup">
                 <button type="button">Sign up</button>
             </Link> 

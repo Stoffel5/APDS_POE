@@ -4,6 +4,7 @@ import Home from './pages/home'
 import Login from './pages/login'
 import Signup from './pages/signup'
 import Navbar from './components/navbar'
+import EmployeeTransactionPage from './pages/employeeTransactionPage'
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </Routes>
           <Routes>
             <Route path='/signup' element={<Signup/>}/>
+          </Routes>
+          <Routes>
+            <Route path='/employeeTransactionPage' element={<EmployeeTransactionPage/>}/>
           </Routes>
           <Routes>
             <Route path='/' element={<WelcomePage/>}/>

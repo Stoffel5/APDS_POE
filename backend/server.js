@@ -8,7 +8,9 @@ const helmet = require('helmet')
 
 //imports
 const userRoutes = require('./routes/users')
-const transactionRoutes = require('./routes/transactions')
+const transactionRoutes = require('./routes/transactions') // Import routes
+
+const transactionRoutess = require('./routes/transactionRoutes');
 
 //creating express package
 const app = express()
@@ -53,6 +55,7 @@ app.use(helmet.noSniff())
 
 app.use('/api/users', userRoutes)
 app.use('/api/transaction', transactionRoutes)
+app.use('/api/transaction', transactionRoutess)
 
 //sets up https server  by providing the SSL key and certificate
 const sslServer = https.createServer({

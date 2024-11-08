@@ -16,7 +16,7 @@ const Home = () => {
             
             const fetchTransactions = async () => {
                 try {
-                    const response = await fetch(`api/transaction?providerEmail=${storedEmail}`);
+                    const response = await fetch(`api/transaction`);
                     
                     if (!response.ok) {
                         throw new Error("Failed to fetch transactions");
@@ -32,6 +32,7 @@ const Home = () => {
         }
     }, [dispatch]);
 
+    
     if(email){
         return (
             <div className="Home">
